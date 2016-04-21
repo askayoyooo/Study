@@ -20,7 +20,11 @@
 ####        4.声明分组
             h1 {font: 18px Helvetica; color: purple; background: aqua;}/*注意每个声明后面必须跟（；）*/
 ####        5.结合选择器分组和声明分组
-            h1, h2, h3, h4, h5, h6,{color: gray; background: white; padding: 0.5em; border: 1px solid black; forn-family: Charcoal, sans-serif;}
+            h1, h2, h3, h4, h5, h6,{color: gray; 
+                                    background: white; 
+                                    padding: 0.5em; 
+                                    border: 1px solid black; 
+                                    font-family: Charcoal, sans-serif;}
 ####       6.类选择器和ID选择器
             需要适当地标记文档后才能使用这些选择器。
 ####        7.类选择器
@@ -32,7 +36,8 @@
 ####        8.多类选择器
             一个元素可以有多个类中间用空格表示,并且不分顺序。
             <p class="warning urgent">This is a urgent warning paragraph</p>
-            .warning.urgent {background: silver} /*同时属于warning和urgent类的元素背景被设置为silver，假如有三个类，但是这三个类包好了warning，urgent,那么这个元素也会被设置为silver*/
+            .warning.urgent {background: silver} /*同时属于warning和urgent类的元素背景被设置为silver，假如有三个类，
+            但是这三个类包好了warning，urgent,那么这个元素也会被设置为silver*/
             !   IE7以前的版本只会识别多类选择器中的最后一个类。
 ####        9.ID选择器
             #+选择器名
@@ -100,3 +105,39 @@
                  :active 指示被用户输入激活的元素。
                  伪类的顺序很重要通常：link-visited-focus-hover-active
                  动态伪类可以应用到任何元素。
+####          4.选择第一个子元素
+                  静态伪类 ：first-child
+                  p:first-child {color: red;}
+                  其选择的是作为第一个子元素的P元素，而不是P元素的第一个子元素。
+####          5.根据语言选择
+                  ：lang()伪类可以根据元素的语言来选择。
+                  *：lang(fr) {front-style: italic;}/*将所有法语元素变成斜体*/
+                  需要语言特定演示的时候，大多数情况下伪类是更好的选择。
+####          6.结合伪类
+                  a:link:hover:lang(de) {color: red;}/*将德语语言的未访问链接鼠标放上时显示红色*/
+                  a:visited:hover:lang(de) {color: silver;}/*将德语语言的已访问链接鼠标放上是显示红色*/
+##      5.伪元素选择器
+                就像伪类为锚点指定幻象类一样，伪元素能够在文档中插入假想的元素，从而达到某种效果
+####          1.设置首字母样式
+                  p:first-letter {color: red;}/*将每一段的第一个字母变成红色*/
+                  h2:first-letter {font-size: 200%;}/*h2的第一个字母大小是标题字母大小的两倍*/
+                  这种为元素并不直接出现在源代码中，而是由用户代理动态构造的。
+####          2.设置第一行的样式
+                  p:first-line {color: purple;}/*每一段的第一行会变成紫色*/
+####          3.：first-letter 和first-line的限制
+                  在CSS2中此伪元素只能用于标记或段落之类的块级元素，而不能用于超链接等行内元素。
+                  属性限制见CSS权威指南第三版page66
+                  所有伪元素都应该放在出现该伪元素的选择器最后面。
+####          4.设置之前和之后元素的样式
+                  h2:before {content:"[]"; color: silver;}/*在每个h2元素前加一堆银色中括号*/
+                  伪元素用于插入生成的内容并为其设置样式。
+                  body:after {content: "The End.".}
+#第三章 结构与层叠
+    每个合法文档都会生成一个结构树，这也是CSS继承的核心。继承是从一个元素向其后代元素传递属性值所采用的机制。本章将讨论
+    特殊性、继承和层叠
+##      1.特殊性
+            特殊性值表述为4各部分，如0,0,0,0
+            选择器中给定的各个ID属性值，加0,1,0,0
+            选择器中给定的各个类属性值，属性选择或伪类，加0,0,1,0
+            选择器中给定各个元素和伪元素，加0,0,0,1
+            结合符和通配选择器对特殊性没有任何贡献
