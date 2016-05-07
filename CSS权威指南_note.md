@@ -254,3 +254,85 @@
                     像素。
                     em的值会相对于父元素的字体大小改变。
                     ex是指所用字体中小写x的高度。
+####        像素长度
+                    如果使用响度设置字体大小，那么IE7之前的用户无法用浏览器文本大小调整字体大小。
+                    非常适合用像素度量图像的大小。
+####        像素理论
+                    像素被定义为相对度量单位 page96
+####        如何取舍
+                    最好的度量单位可能是em,如果合适也可以使用px.
+                    对于元素的边框和定位可能更加适合使用像素。
+##      URL
+               一般格式： url(protocol://server/pathname)                    url 与开始括号之间不能有空格
+               相对url:   url(pathname) ex: pix/wattle22.gif
+               样式表导入时候，@import url(special/toppings.css)会引入http://www.xxx.org/styles/special/toppings.css
+               而我们期望引入的是http://www.xxx.org/special/toppings.css
+##      关键字
+               如 a:link {text-decoration: none;}中的none为关键字。
+####         inherit
+                    inherit是所有属性共有的，与其父元素的值相同。
+                    toolbar a {color: inherit;} 这样让链接集成color的值，而不是代理默认值。一般默认继承规则优先级低于
+                    指定规则，但是指定inherit则会把情况翻转。
+##      CSS2单位
+                    角度值：指定声音从哪个位置发出。共有3 种度：度deg/梯度grad/弧度rad.
+                    时间值：用于指定元素之间的延迟。可表示为毫秒ms,也可为秒s.
+                    频率值：语音浏览器可以产生声音声明一个给定频率。可以表示为Hz或者MHz.不区分大小写。
+#第五章 字体
+        CSS字体处理中最复杂的就是字体系列的匹配和字体加粗匹配，其次是字体大小的计算。
+##      字体系列
+              Serif 字体：字体成比例，其有上下短线。ex: Times/Georgia/New Century Schoolbook
+              Sans-serif 字体：字体成比例，其上下无短线。ex: Helvetica/Geneva/Verdana/Arial/Univers
+              Monospace 字体：字体不成比例。通常用来模仿打印机打印出来的文本。每个字符宽度完全相同。可能有上下短线也
+                                可能没有短线。ex: Courier/Courier New/Andale Mono
+              Cursive 字体：字体模仿人的手写体。ex: Zapf Chancery/Author/Comic Sans
+              Fantasy 字体：无任何特征定义。ex: Western/Woodlock/Klingon
+              特定字体系列：Times/Verdana/Helvetica/Arial
+              用户安装的任何字体系列都会落入上述某种通用系列当中。
+####        使用通用字体系列
+                    如果希望文档中使用一种Sans-serif 字体，但是并不关心是那种：
+                        body {font-family: sans-serif;}
+####        指定字体系列
+                        h1 {font-family: Georgia;}  如果用户代理没有此字体则使用默认字体显示
+                        h1 {font-family: Georgia. serif;} 如果Georgia不可用则使用另外一种serif字体。
+                        强烈建议所有的font-family规则中都提供一种通用字体系列。
+####        使用引号
+                     当字体名中有一个多个空格或者字体名包括%，#或$之类的符号，则需要使用引号ex: ‘Karrank%’
+                     如果将一个通用名用引号包裹，则代理会热为你需要一个与此同名的字体，而不是一个通用字体系列。
+                     单双引号都可以。
+                     如果用于style 属性，此属性使用双引号，则字体必须使用单引号。
+##      字体加粗
+             a{ font-weight: normal|bold|lighter|100|200|300|400|500|600|700|800|900|inherit}
+####        加粗如何起作用
+                    400=normal
+                    700=bold
+####        让字体更粗 Need update
+####        让字体更细 Need update
+####        字体大小
+                    *{font-size: xx-small| x-small| small| medium| large| x-large| xx-large| smaller| larger|<length>|
+                                    percentage| inherit}        
+                    初始值为：medium
+                    其给定字体的em框提供一个大小，而不能保证实际显示字符就是这种大小。
+####        绝对大小
+                    一个绝对大小与下一个绝对大小之间的差别应当是向上1.5，向下0.66（缩放因子一般结余1.0~1.2之间CSS2）
+####        相对大小
+                    larger 和smaller 比较简单，其实相对父元素的大小，在绝对大小的梯度上上移或下移。使用绝对大小缩放因子
+####        百分数和大小
+                    总是跟父级元素的大小来计算。
+####        字体大小和继承
+                    font-size继承的是计算值而不是百分数。每次计算都有可能产生误差，如果计算丛集较多会积累误差。
+####        使用长度单位
+                    可以使用长度单位来设置字体的大小。
+                    p.one {font-size：36pt;}
+##      风格和变形
+                    font-style 和font-variant
+####        有风格的字体
+                    *{font-style: italic| oblique| normal| inherit}
+                    italic 是单独的字体
+                    oblique是将现有字体倾斜
+####        字体的变形
+                    *{font-variant: small-caps| normal| inherit}
+                    small-caps: 使用小型大写字母文本。大写字母大，小写字母是小的大写字母。
+##      拉伸和调整字体
+                    拉伸与替换
+                    *{font-stretch: normal| wider| narrower| ultra-condensed| extra-condensed| condensed| semi-condensed
+                                    expanded| extra-expanded| ultra-expanded| inherit}                  
