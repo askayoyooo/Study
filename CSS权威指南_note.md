@@ -335,4 +335,30 @@
 ##      拉伸和调整字体
                     拉伸与替换
                     *{font-stretch: normal| wider| narrower| ultra-condensed| extra-condensed| condensed| semi-condensed
-                                    expanded| extra-expanded| ultra-expanded| inherit}                  
+                                    expanded| extra-expanded| ultra-expanded| inherit}        
+####        font属性
+                    *{font: [[<font-style>||<font-variant>|| <font-weight>]?<font-size>[/<line-height>]?<font-family>] |
+                     caption | icon | menu | message-box | small-caption | status-bar | inherit }
+                     font 属性的前三个值（font-style, font-variant, font-weight）是可以不在乎顺序的。
+                     而 font-size 和font-family则要按照特定的顺序。
+####        增加行高
+                     font设置了以上五个值之外还可以设置line-height,进过line-height是一个文本属性而不是字体属性。
+                     这个可以作为font-size的一个补充用斜线（/）分割:
+                                    body { font-size: 12px;}
+                                    h2 {font: bold italic 200%/1.2 Verdana, Helvetica, Arial, Sans-serif;}
+####        适当的使用简写
+                     在使用font简写时所有的被忽略的值都会被重置为默认值。
+####        使用系统字体
+                     button {font: caption;}/*将button的字体设置为系统按钮的字体*/
+                     caption: 用于标题的控件，如按钮；
+                     icon: 用于对图标加标签；
+                     menu: 用于菜单，即下拉菜单和菜单列表；
+                     message-box：用于对话框；
+                     small-caption: 用于对你小控件加标签；
+                     status-bar：用于窗口状态条。
+                     利用以上这些可以建立一些基于web的看似像系统自带的应用。
+                     button{font:caption; font-size: 1em;}/*可以使字体大小跟其父元素保持一致。*/
+##      字体匹配
+                     page132
+#第六章 文本属性
+                     
