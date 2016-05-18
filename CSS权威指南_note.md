@@ -361,4 +361,54 @@
 ##      字体匹配
                      page132
 #第六章 文本属性
+##      缩进和水平齐平
+####        缩进文本
+                    p{text-indent: <length>| <percentage> | inherit}无法用于行内元素，可用于块级元素。
+                    行内元素使用内外边距
+                    可以为负值，使首行悬挂在元素中余下部分的左边。（悬挂缩进）
+                    p {text-indent: -4em; padding-left: 4em;}(防止悬挂部分超出浏览器窗口)
+####        水平对齐
+                    p {text-align: left | center | right | justify | inherit|}
+                    center 与<center></center>元素相比，后者不仅影响文本还会把整个元素居中。
+##      垂直对齐
+####        行高
+                    指定line-height可以用来增加或减少文本航之间的垂直间隔。line-height 的值和字体大小之差就是行间距。
+                    p {line-height: <length> | <percentage> | <number> | normal | inherit}
+####        构造文本行
+                    p142
+####        行高和继承
+                    body {font-size: 10px;}
+                    div {line-height:1em;}/*line height=10px*/
+                    p {font-size:18px;}
+                    ========================
+                    指定一个数时，缩放因子将是继承值而不是计算值，这个数会应用到钙元素及其所有子元素。
+                    ========================
+                    body {font-size: 10px;}
+                    div {line-height:1.5;}/*line height=18*1.5=27px*/
+                    p {font-size:18px;}
+####        垂直对齐文本
+                    img {vertical-align: baseline | sub | super | top | text-top | middle | bottom| text-bottom |
+                                            <percentage> | <length> | inherit} /*应用于行内元素*/
+####        基线对齐
+                    baseline
+                    如果一个垂直对齐元素没有极限，也就是说这是一个图像或表单输入元素，或者其他替换元素，那么元素的底端
+                    与其父元素的极限对齐。
+####        上标和下标
+                    sub | super
+                    即升高或者降低文本基线或者图像底端。值取决于用户代理。
+                    上标和下标并不改变字体的大小。
+####        底端对齐
+                    bottom
+                    将元素的行内框底端与行框底端对齐
+                    text-bottom
+                    非文本元素会忽略这个值。
+####        顶端对齐
+                    top
+                    与bottom相反。
+####        居中对齐
+                    middle
+                    往往应用于图像，但不限于图像。
+                    middle会把行内元素框的重点与父元素基线上方0.5ex处的一个点对齐，1ex相对于父元素的font-size定义。
+####        百分数
+                    使用百分数不能模仿图像的align = "middle" 对齐。正百分数会使元素升高，负百分数会使元素降低。
                      
